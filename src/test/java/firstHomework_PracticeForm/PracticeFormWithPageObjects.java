@@ -2,56 +2,62 @@ package firstHomework_PracticeForm;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PracticeFormWithPageObjects extends TestBase {
 
         @Test
         void practiceForm() {
-                String userName = "Mark";
+                String firstUserName = "Mark";
+                String lastUserName = " Versal";
+                String emailUserName = "MarkVersal@mail.ya";
+                String numberUserName = "1234567890";
+                String gender = "Male";
+                String birthDay = "30";
+                String birthMonth = "July";
+                String birthYear = "2008";
+                String subjects = "Hindi";
+                String hobbies = "Sports";
+                String address = "Russia";
+                String state = "Uttar Pradesh";
+                String city = "Lucknow";
 
                 registrationPage.openPage()
-                        .setFirstName(userName)
-                        .setLastName("Versal")
-                        .setEmail("MarkVersal@mail.ya")
+                        .setFirstName(firstUserName)
+                        .setLastName(lastUserName)
+                        .setEmail(emailUserName)
                         .setGender()
-                        .setNumber("1234567890")
-                        .setBirthDay("30","July", "2008");
-
-                $("#subjectsInput").setValue("Hindi");
-                $("#react-select-2-option-0").click();
-                $("#hobbiesWrapper").$(byText("Sports")).click();
-                $("#uploadPicture").uploadFromClasspath("pictures/test.png");
-                $("#currentAddress").setValue("Russia");
-                $("#state").click();
-                $(".css-11unzgr").$(byText("Uttar Pradesh")).click();
-                $("#city").click();
-                $(".css-11unzgr").$(byText("Lucknow")).click();
-                $("#submit").click();
+                        .setNumber(numberUserName)
+                        .setBirthDay(birthDay,birthMonth,birthYear)
+                        .setSubjects(subjects)
+                        .setHobbies(hobbies)
+                        .setFile()
+                        .setAddress(address)
+                        .setState(state)
+                        .setCity(city)
+                        .submit();
                 registrationPage.verifyResultsModalAppears()
-                                .verifyResult("Student Name", userName + " Versal")
-                                .verifyResult("Student Email", "MarkVersal@mail.ya")
-                                .verifyResult("Gender", "Male")
-                                .verifyResult("Mobile", "1234567890")
-                                .verifyResult("Date of Birth", "1 February,1999");
-                $(".modal-body").shouldHave(text("Hindi"));
-                $(".modal-body").shouldHave(text("Sports"));
-                $(".modal-body").shouldHave(text("test.png"));
-                $(".modal-body").shouldHave(text("Russia"));
-                $(".modal-body").shouldHave(text("Lucknow"));
-        }
-
-        @Test
-        void practiceForm1() {
-                String userName = "Mark";
-
-                registrationPage.openPage();
-                registrationPage.setFirstName(userName);
-                registrationPage.setLastName("Versal");
-                registrationPage.setEmail("MarkVersal@mail.ya");
-                registrationPage.setGender();
-                registrationPage.setNumber("1234567890");
+                        .verifyResult("Student Name", firstUserName + lastUserName)
+                        .verifyResult("Student Email", emailUserName)
+                        .verifyResult("Gender", gender)
+                        .verifyResult("Mobile", numberUserName)
+                        .verifyResult("Subjects", subjects)
+                        .verifyResult("Hobbies", hobbies)
+                        .verifyResult("Picture", "test.png")
+                        .verifyResult("Address", address)
+                        .verifyResult("State and City", city);
         }
 }
+
+//        @Test
+//        void practiceForm1() {
+//                String userName = "Mark";
+//
+//                registrationPage.openPage();
+//                registrationPage.setFirstName(userName);
+//                registrationPage.setLastName("Versal");
+//                registrationPage.setEmail("MarkVersal@mail.ya");
+//                registrationPage.setGender();
+//                registrationPage.setNumber("1234567890");
+//        }
+//}

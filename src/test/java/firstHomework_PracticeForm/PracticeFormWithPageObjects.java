@@ -3,25 +3,24 @@ package firstHomework_PracticeForm;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
-import static utils.RandomUtils.getRandomEmail;
-import static utils.RandomUtils.getRandomString;
+import static utils.RandomUtils.*;
 
 public class PracticeFormWithPageObjects extends TestBase {
         Faker faker = new Faker();
 
-        String firstUserName = faker.name().firstName(),
-                lastUserName =  faker.name().lastName(),
-                emailUserName = faker.internet().emailAddress(),
-                numberUserName = "1234567890",
-                gender = "Male",
-                birthDay = "30",
-                birthMonth = "July",
-                birthYear = "2008",
-                subjects = "Hindi",
-                hobbies = "Sports",
-                address = "Russia",
-                state = "Uttar Pradesh",
-                city = "Lucknow";
+        String firstUserName = faker.name().firstName();
+        String lastUserName =  faker.name().lastName();
+        String emailUserName = faker.internet().emailAddress();
+        String numberUserName = "79" + faker.number().numberBetween(10000000,99999999);
+        String gender = faker.demographic().sex();
+        String birthDay = faker.
+        String birthMonth = "July",
+        String birthYear = "2008",
+        String subjects = "Hindi",
+        String hobbies = "Sports",
+        String address = "Russia",
+        String state = "Uttar Pradesh",
+        String city = "Lucknow";
 
         @Test
         void practiceForm() {

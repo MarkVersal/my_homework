@@ -9,7 +9,7 @@ public class RandomUtils {
 
     public static void main(String[] args) {
         System.out.println(getRandomString(10));
-        System.out.println(getRandomInt(10, 100));
+        System.out.println(getRandomInt(1, 30));
         System.out.println(getRandomEmail());
 
         String[] names = {"a", "b", "c", "d", "e"};
